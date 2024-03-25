@@ -18,8 +18,19 @@ find_package(rclcpp_lifecycle REQUIRED)
 add_executable(lifecycle_talker src/lifecycle_talker.cpp)
 ament_target_dependencies(lifecycle_talker rclcpp std_msgs rclcpp_lifecycle)
 
+add_executable(lifecycle_listener src/lifecycle_listener.cpp)
+ament_target_dependencies(lifecycle_listener rclcpp std_msgs rclcpp_lifecycle)
+
+add_executable(lifecycle_service_client src/lifecycle_service_client.cpp)
+ament_target_dependencies(lifecycle_service_client
+  "lifecycle_msgs"
+  "rclcpp_lifecycle"
+)
+
 install(TARGETS
   lifecycle_talker
+  lifecycle_listener
+  lifecycle_service_client
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)

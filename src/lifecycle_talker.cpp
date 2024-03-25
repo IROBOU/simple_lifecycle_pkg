@@ -98,7 +98,8 @@ private:
         // We independently from the current state call publish on the lifecycle
         // publisher.
         // Only if the publisher is in an active state, the message transfer is
-        // enabled and the message actually published.
+        // enabled and the message actua        // subscription_ = this->create_subscription<std_msgs::msg::String>(
+        //     "topic", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1));
         publisher_->publish(message);
     }
     rclcpp::TimerBase::SharedPtr timer_;
